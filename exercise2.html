@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>Day time</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: rgb(71, 136, 255);
+      text-shadow: 2px 2px 3px #000;
+    }
+
+    .title {
+      display: flex;
+      justify-content: center;
+      color: #fff;
+      padding: 3rem 0;
+    }
+    .box {
+      margin: 0 auto;
+      width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 3px 3px 8px #000;
+    }
+    #resultado {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+    #resultado-txt {
+      margin: 1rem;
+      margin-bottom: 2rem;
+      text-shadow: none;
+      font-size: 1.4rem;
+    }
+    #resultado-img img {
+      margin-bottom: 2rem;
+      width: 250px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgb(0, 0, 0);
+    }
+    .footer {
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body id="body">
+  <div class="title">
+    <h1>Horário do Dia</h1>
+  </div>
+  <div class="box">
+    <div id="resultado">
+      <div id="resultado-txt">
+        <p>Preencha os dados acima para obter o resultado</p>
+      </div>
+      <div id="resultado-img">
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer">
+      &copy; CursoEmVideo 2021
+    </div>
+  </footer>
+
+  <script>
+    var data = new Date()
+    var hora = ('0' + data.getHours()).slice(-2)
+    var min = ('0' + data.getMinutes()).slice(-2)
+    var bg = document.getElementById('body')
+    var img = document.createElement('img')
+    img.setAttribute('id', 'image')
+    restxt = document.getElementById('resultado-txt')
+    resimg = document.getElementById('resultado-img')
+    if(hora >= 5 && hora < 12) {
+      restxt.innerHTML = `Bom dia! São ${hora}:${min} da manhã!`
+      bg.style.background = '#ffdc37'
+      img.setAttribute('src', 'dia1.jpeg')
+    } else if(hora >= 12 && hora < 19) {
+      restxt.innerHTML = `Boa tarde! São ${hora}:${min} da tarde!`
+      bg.style.background = '#ffaa00'
+      img.setAttribute('src', 'dia2.jpg')
+    } else if(hora >= 19 || hora < 5) {
+      restxt.innerHTML = `Boa noite! São ${hora}:${min} da noite!`
+      bg.style.background = '#191979'
+      img.setAttribute('src', 'dia3.jpg')
+    }
+    resimg.appendChild(img)
+  </script>
+</body>
+</html>
